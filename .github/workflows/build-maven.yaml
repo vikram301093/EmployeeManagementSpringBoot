@@ -24,8 +24,8 @@ jobs:
       - name: Get Version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          echo "::set-output name=version::$VERSION"
-        id: get_version
+           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+        id: get-version
 
       #- name: Run application
       #  run: mvn clean install javadoc:jar source:jar --no-snapshot-updates -T 4 -DskipTests -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
@@ -41,11 +41,11 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-            images: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}:${{ steps.get_version.outputs.version }}
+            images: ${{ vars.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }} 
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
          context: .
          push: true
-         tags: ${{ steps.meta.outputs.tags }}
+         tags: ${{ steps.meta.outputs.tags }}:${{ steps.get-version.outputs.version }}
