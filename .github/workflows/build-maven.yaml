@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  REGISTRY: hub.docker.com
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-maven:
@@ -26,7 +23,7 @@ jobs:
       #  shell: bash
 
       - name: Testing changes
-        run: ${{ vars.DOCKERHUB_USERNAME }}
+        run: echo "Testing ${{ vars.DOCKERHUB_USERNAME }}"
         shell: bash
 
       - name: Login to Docker Hub
