@@ -25,10 +25,6 @@ jobs:
       #  run: mvn clean install javadoc:jar source:jar --no-snapshot-updates -T 4 -DskipTests -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
       #  shell: bash
 
-      - name: Testing changes
-        run: echo "Testing ${{ vars.DOCKERHUB_USERNAME }}"
-        shell: bash
-
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
