@@ -21,10 +21,14 @@ jobs:
       - name: Install Java & Maven
         uses: vikram301093/java-maven-action@v1.0.0
 
+      - name: Print Env Variable
+        run: echo "${{ env.REPO_NAME }}"
+        shell: bash
+
       - name: Get Version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
         id: get-version
 
       - name: Run application
