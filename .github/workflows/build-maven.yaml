@@ -18,5 +18,5 @@ jobs:
         uses: vikram301093/java-maven-action@v1.0.0
 
       - name: Run application
-        run: mvn clean install
+        run: mvn clean install javadoc:jar source:jar --no-snapshot-updates -T 4 -DskipTests -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
         shell: bash
