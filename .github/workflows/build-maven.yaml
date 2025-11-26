@@ -21,10 +21,13 @@ jobs:
       - name: Running Java Application
         uses: docker://631043/build-java-action:1.1.0
         with:
-          maven_command: mvn clean install
+          maven_command: mvn clean install javadoc:jar source:jar -T 4
           build_name: test
           build_number: 1.0.0
           publish: false
+          args: >
+            --no-snapshot-updates
+            -DskipTests -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
 
       - name: Install Java & Maven
         uses: vikram301093/java-maven-action@v1.0.0
