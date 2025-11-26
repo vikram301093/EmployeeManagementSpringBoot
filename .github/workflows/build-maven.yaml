@@ -22,6 +22,8 @@ jobs:
         uses: docker://631043/build-java-action:1.1.0
         with:
           maven_command: mvn clean install
+          build_name: test
+          build_number: 1.0.0
           publish: false
 
       - name: Install Java & Maven
