@@ -18,6 +18,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Running Java Application
+        uses: docker://631043/build-java-action:1.1.0
+        with:
+          MAVEN_COMMAND: mvn clean install
+
       - name: Install Java & Maven
         uses: vikram301093/java-maven-action@v1.0.0
 
