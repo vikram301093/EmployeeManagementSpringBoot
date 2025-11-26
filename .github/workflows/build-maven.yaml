@@ -21,7 +21,8 @@ jobs:
       - name: Running Java Application
         uses: docker://631043/build-java-action:1.1.0
         with:
-          MAVEN_COMMAND: mvn clean install
+          maven_command: mvn clean install
+          publish: false
 
       - name: Install Java & Maven
         uses: vikram301093/java-maven-action@v1.0.0
