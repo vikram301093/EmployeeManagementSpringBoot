@@ -27,7 +27,8 @@ jobs:
           publish: false
           args: >
             --no-snapshot-updates
-            -DskipTests -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
+            -DskipTests 
+            -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
 
       - name: Install Java & Maven
         uses: vikram301093/java-maven-action@v1.0.0
